@@ -1,4 +1,5 @@
 ```
 init x as Integer;
-set x = 4;
+set x to 5;
+print x;
 ```
