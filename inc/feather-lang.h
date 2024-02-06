@@ -10,6 +10,7 @@
         KEYWORD,
         OPERATOR,
         LITERAL_VALUE,
+        IDENTIFIER,
     } TokenType;
 
 
@@ -60,5 +61,11 @@
         };
 
     } Token;
+
+
+    typedef enum LexerError {
+        LexErr_NO_ERROR,
+        LexErr_UNEXPECTED_CHARACTER,
+    } LexerError;
 
 #endif /* FEATHER_LANGUAGE_H_ */
