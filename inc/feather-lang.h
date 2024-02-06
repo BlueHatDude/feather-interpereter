@@ -1,12 +1,15 @@
 #ifndef FEAHTER_LANGUAGE_H_
 #define FEAHTER_LANGUAGE_H_
 
+    /* Number Types */
+    #include <stddef.h>
     #include <stdint.h>
     typedef float float32_t;
     typedef double float64_t;
 
 
     typedef enum TokenType {
+        EMPTY,
         KEYWORD,
         OPERATOR,
         LITERAL_VALUE,
@@ -39,6 +42,8 @@
         PT_DECIMAL,
         PT_STRING,
         PT_BOOLEAN,
+        PT_NONE,
+        PT_UNDEFINED,
     } PrimitiveTypes;
 
 
@@ -67,5 +72,8 @@
         LexErr_NO_ERROR,
         LexErr_UNEXPECTED_CHARACTER,
     } LexerError;
+
+    /* Function Protoypes */
+    void runLexer(const char* inp, Token tokens[], const size_t tokenSize);
 
 #endif /* FEATHER_LANGUAGE_H_ */
