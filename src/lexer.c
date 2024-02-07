@@ -91,22 +91,42 @@ Token generateToken(const char* inp) {
 
     /* Keyword */
     if ( strcmp(inp, "set") == 0 ) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_SET;
     } else if ( strcmp(inp, "to") == 0) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_TO;
     } else if ( strcmp(inp, "init") == 0 ) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_INIT;
     } else if ( strcmp(inp, "as") == 0 ) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_AS;
     } else if ( strcmp(inp, "Integer") == 0 ) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_INTEGER;
     } else if ( strcmp(inp, "Decimal") == 0 ) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_DECIMAL;
     } else if ( strcmp(inp, "String") == 0) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_STRING;
     } else if ( strcmp(inp, "Boolean") == 0 ) {
-
+        token.type = KEYWORD;
+        token.keyword = KW_BOOLEAN;
     }
+
+    /* Boolean */
+    if ( strcmp(inp, "true") ) {
+        token.type = PT_BOOLEAN;
+        token.boolval = BV_TRUE;
+    } else if ( strcmp(inp, "false") ) {
+        token.type = PT_BOOLEAN;
+        token.boolval = BV_FALSE;
+    }
+
+    /* Numbers */
+
 
     return token;
 }
@@ -131,9 +151,19 @@ void printTokens(const Token tokens[], const size_t len) {
                 break;
             case OPERATOR:
                 break;
-            case LITERAL_VALUE:
-                break;
             case IDENTIFIER:
+                break;
+            case PT_INTEGER:
+                break;
+            case PT_DECIMAL:
+                break;
+            case PT_STRING:
+                break;
+            case PT_BOOLEAN:
+                break;
+            case PT_NONE:
+                break;
+            case PT_UNDEFINED:
                 break;
         }
     }

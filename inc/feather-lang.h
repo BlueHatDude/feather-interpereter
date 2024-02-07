@@ -9,12 +9,25 @@
 
 
     typedef enum TokenType {
+        /* Literal Values */
         EMPTY,
         KEYWORD,
         OPERATOR,
-        LITERAL_VALUE,
         IDENTIFIER,
+        /* Primitive Types */
+        PT_INTEGER,
+        PT_DECIMAL,
+        PT_STRING,
+        PT_BOOLEAN,
+        PT_NONE,
+        PT_UNDEFINED,
     } TokenType;
+
+
+    typedef enum BoolVal {
+        BV_FALSE,
+        BV_TRUE
+    } BoolVal;
 
 
     typedef enum Keywords {
@@ -37,16 +50,6 @@
     } Delimater;
 
 
-    typedef enum PrimitiveTypes {
-        PT_INTEGER,
-        PT_DECIMAL,
-        PT_STRING,
-        PT_BOOLEAN,
-        PT_NONE,
-        PT_UNDEFINED,
-    } PrimitiveTypes;
-
-
     typedef enum Operators {
         OP_ADDITION,
         OP_SUBTRACTION,
@@ -63,6 +66,7 @@
             Operators optype;
             int64_t intval;
             float64_t floatval;
+            BoolVal boolval;
         };
 
     } Token;
