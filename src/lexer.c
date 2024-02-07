@@ -1,6 +1,7 @@
 #include "../inc/feather-lang.h"
 #include <string.h>
 #include <stddef.h>
+#include <stdio.h>
 
 
 /**
@@ -86,10 +87,57 @@ static inline void appendToken(const Token token, Token tokens[]) {
 
 
 Token generateToken(const char* inp) {
-    (void) inp;
-    Token tempToken = {.type=EMPTY};
+    Token token = {.type=EMPTY};
 
-    return tempToken;
+    /* Keyword */
+    if ( strcmp(inp, "set") == 0 ) {
+
+    } else if ( strcmp(inp, "to") == 0) {
+
+    } else if ( strcmp(inp, "init") == 0 ) {
+
+    } else if ( strcmp(inp, "as") == 0 ) {
+
+    } else if ( strcmp(inp, "Integer") == 0 ) {
+
+    } else if ( strcmp(inp, "Decimal") == 0 ) {
+
+    } else if ( strcmp(inp, "String") == 0) {
+
+    } else if ( strcmp(inp, "Boolean") == 0 ) {
+
+    }
+
+    return token;
+}
+
+
+static void clearBuffer(char* str) {
+    for (size_t i = 0; str[i] != '\0'; ++i) {
+        str[i] = ' ';
+    }
+}
+
+
+void printTokens(const Token tokens[], const size_t len) {
+    /* Index: Type | Value */
+
+    for (size_t i = 0; i < len; ++i) {
+        switch (tokens[i].type) {
+            case EMPTY:
+                printf("%zu: EMPTY\n", i);            
+                break;
+            case KEYWORD:
+                break;
+            case OPERATOR:
+                break;
+            case LITERAL_VALUE:
+                break;
+            case IDENTIFIER:
+                break;
+        }
+    }
+
 }
 
 
@@ -117,8 +165,8 @@ void runLexer(const char* inp, Token tokens[], const size_t tokenSize) {
         endIndex = nextChar - 1;
         strncpy(buffer, &inp[startIndex], endIndex - startIndex);
         appendToken( generateToken(buffer), tokens );
+        clearBuffer(buffer);
         nextChar = getNextChar(inp, startIndex);
     }
 
-    /* Clean-Up */
 }
